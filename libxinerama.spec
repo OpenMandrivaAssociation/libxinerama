@@ -2,7 +2,7 @@
 Name: libxinerama
 Summary: The Xinerama Library
 Version: 1.0.2
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -91,5 +91,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/libXinerama.so.1
 %{_libdir}/libXinerama.so.1.0.0
+%_mandir/man3/*
 
 
