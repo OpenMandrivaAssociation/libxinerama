@@ -1,8 +1,8 @@
 %define libxinerama %mklibname xinerama 1
 Name: libxinerama
 Summary: The Xinerama Library
-Version: 1.0.3
-Release: %mkrel 3
+Version: 1.1
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -11,7 +11,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxext-devel >= 1.0.0
-BuildRequires: x11-proto-devel >= 1.0.0
+BuildRequires: x11-proto-devel >= 7.5
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
@@ -35,10 +35,11 @@ Summary: Development files for %{name}
 Group: Development/X11
 
 Requires: %{libxinerama} = %{version}
-Requires: x11-proto-devel >= 1.0.0
+Requires: x11-proto-devel >= 7.5
 Provides: libxinerama-devel = %{version}-%{release}
 
 Conflicts: libxorg-x11-devel < 7.0
+Conflicts: libxinerama-devel < 1.1
 
 %description -n %{libxinerama}-devel
 Development files for %{name}
@@ -48,6 +49,7 @@ Development files for %{name}
 %{_libdir}/libXinerama.so
 %{_libdir}/libXinerama.la
 %{_libdir}/pkgconfig/xinerama.pc
+%{_includedir}/X11/extensions/*.h
 
 #-----------------------------------------------------------
 
