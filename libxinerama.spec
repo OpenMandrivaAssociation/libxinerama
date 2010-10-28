@@ -1,7 +1,7 @@
 %define libxinerama %mklibname xinerama 1
 Name: libxinerama
 Summary: The Xinerama Library
-Version: 1.1
+Version: 1.1.1
 Release: %mkrel 1
 Group: Development/X11
 License: MIT
