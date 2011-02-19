@@ -1,8 +1,11 @@
-%define libxinerama %mklibname xinerama 1
+%define libname %mklibname xinerama 1
+%define develname  %mklibname xinerama -d
+%define staticname  %mklibname xinerama -s -d
+
 Name: libxinerama
 Summary: The Xinerama Library
 Version: 1.1.1
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -19,32 +22,34 @@ The Xinerama Library
 
 #-----------------------------------------------------------
 
-%package -n %{libxinerama}
+%package -n %{libname}
 Summary: The Xinerama Library
 Group: Development/X11
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
-%description -n %{libxinerama}
+%description -n %{libname}
 The Xinerama Library
 
 #-----------------------------------------------------------
 
-%package -n %{libxinerama}-devel
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 
-Requires: %{libxinerama} = %{version}
+Requires: %{libname} = %{version}-%{release}
 Requires: x11-proto-devel >= 7.5
 Provides: libxinerama-devel = %{version}-%{release}
+Provides: libxinerama1-devel = %{version}-%{release}
+Obsoletes: %{mklibname xinerama 1 -d}
 
 Conflicts: libxorg-x11-devel < 7.0
 Conflicts: libxinerama-devel < 1.1
 
-%description -n %{libxinerama}-devel
+%description -n %{develname}
 Development files for %{name}
 
-%files -n %{libxinerama}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libXinerama.so
 %{_libdir}/libXinerama.la
@@ -53,18 +58,20 @@ Development files for %{name}
 
 #-----------------------------------------------------------
 
-%package -n %{libxinerama}-static-devel
+%package -n %{staticname}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxinerama}-devel = %{version}
+Requires: %{develname} = %{version}-%{release}
 Provides: libxinerama-static-devel = %{version}-%{release}
+Provides: libxinerama1-static-devel = %{version}-%{release}
+Obsoletes: %{mklibname xinerama 1 -s -d}
 
 Conflicts: libxorg-x11-static-devel < 7.0
 
-%description -n %{libxinerama}-static-devel
+%description -n %{staticname}
 Static development files for %{name}
 
-%files -n %{libxinerama}-static-devel
+%files -n %{staticname}
 %defattr(-,root,root)
 %{_libdir}/libXinerama.a
 
@@ -93,10 +100,8 @@ rm -rf %{buildroot}
 %postun -p /sbin/ldconfig
 %endif
 
-%files -n %{libxinerama}
+%files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libXinerama.so.1
 %{_libdir}/libXinerama.so.1.0.0
 %_mandir/man3/*
-
-
