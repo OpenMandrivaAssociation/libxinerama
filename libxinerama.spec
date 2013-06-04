@@ -1,50 +1,49 @@
 %define major 1
 %define libname %mklibname xinerama %{major}
-%define develname  %mklibname xinerama -d
+%define develname %mklibname xinerama -d
 
-Name: libxinerama
-Summary: The Xinerama Library
-Version: 1.1.2
-Release: 3
-Group: Development/X11
-License: MIT
-URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/lib/libXinerama-%{version}.tar.bz2
+Name:		libxinerama
+Summary:	The Xinerama Library
+Version:	1.1.3
+Release:	1
+Group:		Development/X11
+License:	MIT
+URL:		http://xorg.freedesktop.org
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXinerama-%{version}.tar.bz2
 
-BuildRequires: pkgconfig(x11) >= 1.0.0
-BuildRequires: pkgconfig(xext) >= 1.0.0
-BuildRequires: x11-proto-devel >= 7.5
-BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(x11) >= 1.0.0
+BuildRequires:	pkgconfig(xext) >= 1.0.0
+BuildRequires:	x11-proto-devel >= 7.5
+BuildRequires:	x11-util-macros >= 1.0.1
 
 %description
-The Xinerama Library
+The Xinerama Library.
 
 %package -n %{libname}
-Summary: The Xinerama Library
-Group: Development/X11
-Conflicts: libxorg-x11 < 7.0
-Provides: %{name} = %{version}
+Summary:	The Xinerama Library
+Group:		Development/X11
+Conflicts:	libxorg-x11 < 7.0
+Provides:	%{name} = %{version}
 
 %description -n %{libname}
-The Xinerama Library
+The Xinerama Library.
 
 %package -n %{develname}
-Summary: Development files for %{name}
-Group: Development/X11
-Requires: %{libname} = %{EVRD}
-Provides: libxinerama-devel = %{EVRD}
-Obsoletes: %{_lib}xinerama1-devel < 1.1.2
-Obsoletes: %{_lib}xinerama-static-devel < 1.1.2
-Conflicts: libxorg-x11-devel < 7.0
+Summary:	Development files for %{name}
+Group:		Development/X11
+Requires:	%{libname} = %{EVRD}
+Provides:	libxinerama-devel = %{EVRD}
+Obsoletes:	%{_lib}xinerama1-devel < 1.1.2
+Obsoletes:	%{_lib}xinerama-static-devel < 1.1.2
+Conflicts:	libxorg-x11-devel < 7.0
 
 %description -n %{develname}
-Development files for %{name}
+Development files for %{name}.
 
 %prep
 %setup -qn libXinerama-%{version}
 
 %build
-autoreconf -fi
 %configure2_5x \
 	--disable-static \
 	--x-includes=%{_includedir} \
@@ -53,7 +52,6 @@ autoreconf -fi
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libname}
