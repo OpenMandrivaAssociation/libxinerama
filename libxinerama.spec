@@ -5,7 +5,7 @@
 Name:		libxinerama
 Summary:	The Xinerama Library
 Version:	1.1.3
-Release:	2
+Release:	3
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -25,7 +25,6 @@ Group:		Development/X11
 Conflicts:	libxorg-x11 < 7.0
 Provides:	%{name} = %{version}
 Requires:	%{name}-manpage = %{EVRD}
-Conflicts:	%{mklibname xinerama 1} < 1.1.3-2
 
 %description -n %{libname}
 The Xinerama Library.
@@ -46,6 +45,7 @@ Development files for %{name}.
 Summary:	Manpage for %{name}
 Group:		Books/Howtos
 BuildArch:	noarch
+Conflicts:	%{mklibname xinerama 1} < 1.1.3-3
 
 %description manpage
 Manual for %{name}.
