@@ -5,15 +5,15 @@
 Summary:	The Xinerama Library
 Name:		libxinerama
 Version:	1.1.3
-Release:	4
+Release:	5
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXinerama-%{version}.tar.bz2
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xext) >= 1.0.0
-BuildRequires:	x11-proto-devel >= 7.5
-BuildRequires:	x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(xorg-macros)
+BuildRequires:	pkgconfig(xproto)
 
 %description
 The Xinerama Library.
@@ -30,13 +30,6 @@ Summary:	Development files for %{name}
 Group:		Development/X11
 Requires:	%{libname} = %{EVRD}
 Provides:	libxinerama-devel = %{EVRD}
-Obsoletes:	%{_lib}xinerama1-devel < 1.1.2
-Obsoletes:	%{_lib}xinerama-static-devel < 1.1.2
-# Due to moved man page, to be removed later
-Conflicts:	%{libname} < 1.1.3-4
-# To be removed soon
-Conflicts:	%{name}-manpage < 1.1.3-4
-Obsoletes:	%{name}-manpage < 1.1.3-4
 
 %description -n %{devname}
 Development files for %{name}.
@@ -63,3 +56,4 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xinerama.pc
 %{_includedir}/X11/extensions/*.h
 %{_mandir}/man3/*
+
