@@ -5,7 +5,7 @@
 Summary:	The Xinerama Library
 Name:		libxinerama
 Version:	1.1.3
-Release:	12
+Release:	13
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
