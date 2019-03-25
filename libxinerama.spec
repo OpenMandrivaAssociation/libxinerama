@@ -2,10 +2,12 @@
 %define libname %mklibname xinerama %{major}
 %define devname %mklibname xinerama -d
 
+%global optflags %{optflags} -O3
+
 Summary:	The Xinerama Library
 Name:		libxinerama
 Version:	1.1.4
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
@@ -35,7 +37,7 @@ Provides:	libxinerama-devel = %{EVRD}
 Development files for %{name}.
 
 %prep
-%setup -qn libXinerama-%{version}
+%autosetup -n libXinerama-%{version} -p1
 
 %build
 %configure \
@@ -43,10 +45,10 @@ Development files for %{name}.
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXinerama.so.%{major}*
@@ -56,4 +58,3 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xinerama.pc
 %{_includedir}/X11/extensions/*.h
 %{_mandir}/man3/*
-
