@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(xproto)
 %if %{with compat32}
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libXext)
+BuildRequires:	devel(libxcb)
 %endif
 
 %description
