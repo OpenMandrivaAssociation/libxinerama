@@ -17,12 +17,12 @@
 
 Summary:	The Xinerama Library
 Name:		libxinerama
-Version:	1.1.4
-Release:	4
+Version:	1.1.5
+Release:	1
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXinerama-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXinerama-%{version}.tar.xz
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xext) >= 1.0.0
 BuildRequires:	pkgconfig(xorg-macros)
@@ -103,7 +103,7 @@ cd build
 %{_libdir}/libXinerama.so
 %{_libdir}/pkgconfig/xinerama.pc
 %{_includedir}/X11/extensions/*.h
-%{_mandir}/man3/*
+%doc %{_mandir}/man3/*
 
 %if %{with compat32}
 %files -n %{lib32name}
